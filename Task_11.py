@@ -2,23 +2,24 @@ def f(x):
     return x * 2
 
 num = int(input())
-spisok = [int(i) for i in num(input().split())]
 i = 0
 spisok = []
+num_list = []
 while i != num:
     spisok.append(int(input()))
+    i += 1
 
-    if i == 0:
-        spisok[i] = f(spisok[i])
-        i += 1
-
-    elif spisok[i] != spisok[i - 1]: 
-        spisok[i] = f(spisok[i])
-        i += 1
-    
 for k in range(len(spisok)):
-    print(spisok[k])
 
-
-# избежать вычислений одинаковых элементов
-
+    if k == 0:
+        num_list.append(int(f(spisok[k])))
+        print(num_list[k])
+        k += 1
+    elif spisok[k] == spisok[k - 1]:
+        num_list.append(int(num_list[k - 1]))
+        print(num_list[k])
+        k += 1
+    else:
+        num_list.append(int(f(spisok[k])))
+        print(num_list[k])
+        k += 1
